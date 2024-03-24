@@ -120,3 +120,115 @@ else:
         if n < 2:
             continuar = False
 ```
+Este código primero verifica que el valor ingresado por el usuario cumpla con la condición de ser mayor o igual a 2. Si es así, ajusta el número al par más cercano por debajo (en caso de que el número ingresado sea impar) y luego entra en un ciclo `while` controlado por una bandera llamada `continuar`. Dentro del ciclo, imprime el valor actual de n y luego decrementa n en 2 para pasar al siguiente número par. Si  n se convierte en un valor menor que 2, la bandera `continuar` cambia a `False`, lo que detiene el ciclo.
+
+```mermaid
+graph TD;
+    A(Solicitar número n) --> B{Verificar n ≥ 2}
+    B -- No --> C[Imprimir: n no cumple condición]
+    B -- Sí --> D{Verificar n es par}
+    D -- No --> E[Ajustar n a par más cercano]
+    E --> F[Iniciar ciclo]
+    D -- Sí --> F
+    F --> G[Imprimir n]
+    G --> H{Decrementar n en 2}
+    H --> I{n < 2}
+    I -- Sí --> J[Fin]
+    I -- No --> G
+
+```
+
+_______________________________
+## **Punto 4**
+**Instrucciones:** En 2022 el país A tendrá una población de 25 millones de habitantes y el país B de 18.9 millones. Las tasas de crecimiento anual de la población serán de 2% y 3% respectivamente. Desarrollar un algoritmo para informar en que año la población del país B superará a la de A.
+
+
+```python
+# Inicialización de variables
+poblacion_a = 25e6  # 25 millones de habitantes
+poblacion_b = 18.9e6  # 18.9 millones de habitantes
+tasa_crecimiento_a = 0.02  # Tasa de crecimiento anual del 2%
+tasa_crecimiento_b = 0.03  # Tasa de crecimiento anual del 3%
+ano_actual = 2022  # Año de inicio
+
+# Ciclo while para calcular el año en que la población de B supera a la de A
+while poblacion_b <= poblacion_a:
+    # Actualización de poblaciones según las tasas de crecimiento
+    poblacion_a += poblacion_a * tasa_crecimiento_a
+    poblacion_b += poblacion_b * tasa_crecimiento_b
+    # Incremento del año
+    ano_actual += 1
+
+# Imprimir el año en que la población de B supera a la de A
+print(f"En el año {ano_actual}, la población del país B superará a la de A.")
+```
+
+Este algoritmo comienza con las poblaciones iniciales de ambos países en 2022 y aplica las tasas de crecimiento anual para cada país. El ciclo `while` se repite cada año, actualizando las poblaciones de ambos países según sus respectivas tasas de crecimiento, hasta que la condición (`poblacion_b <= poblacion_a`) ya no se cumple, es decir, la población de B supera a la de A. Cuando esto sucede, el ciclo termina y se imprime el año actual, indicando el momento en que la población de B supera a la de A.
+_______________________________
+## **Punto 5**
+**Instrucciones:** Imprimir el factorial de un número natural n dado.
+
+```python
+# Solicitar al usuario que ingrese un número natural n
+n = int(input("Ingrese un número natural n para calcular su factorial: "))
+
+# Inicializar la variable factorial
+factorial = 1
+
+# Verificar si el número es negativo, cero o positivo
+if n < 0:
+    print("El factorial no se define para números negativos.")
+else:
+    # Calcular el factorial usando un ciclo while
+    numero_actual = n
+    while numero_actual > 1:
+        factorial *= numero_actual
+        numero_actual -= 1
+
+    # Imprimir el resultado
+    print(f"El factorial de {n} es {factorial}.")
+```
+
+Este código primero verifica si el número ingresado es negativo, en cuyo caso informa al usuario que el factorial no se define para números negativos. Si el número es cero o positivo, utiliza un ciclo `while` para calcular el factorial multiplicando los números desde n hasta 1. La variable factorial acumula el producto de estos números, y `numero_actual` se decrementa en cada iteración hasta que alcanza 1, momento en el cual se completa el cálculo del factorial. Finalmente, se imprime el resultado.
+_______________________________
+## **Punto 6**
+**Instrucciones:** Implementar un algoritmo que permita adivinar un número dado de 1 a 100, preguntando en cada caso si el número es mayor, menor o igual.
+```python
+# Inicializar los límites inferior y superior del rango de números.
+limite_inferior = 1
+limite_superior = 100
+
+# Iniciar el ciclo de adivinación.
+while True:
+    # Calcular el punto medio como nuestro próximo número a adivinar.
+    intento = (limite_inferior + limite_superior) // 2
+    
+    # Preguntar al usuario sobre el intento.
+    respuesta = input(f"¿El número es {intento}? (responde 'mayor', 'menor', 'igual'): ").lower()
+    
+    # Ajustar el rango basado en la respuesta.
+    if respuesta == "mayor":
+        limite_inferior = intento + 1
+    elif respuesta == "menor":
+        limite_superior = intento - 1
+    elif respuesta == "igual":
+        print(f"¡Adiviné! Tu número es {intento}.")
+        break
+    else:
+        print("Respuesta no válida. Por favor, responde 'mayor', 'menor' o 'igual'.")
+    
+    # Si se cruzan los límites, significa que ha habido un error en las respuestas dadas.
+    if limite_inferior > limite_superior:
+        print("Parece que ha habido un error en las respuestas. No se puede adivinar bajo estas condiciones.")
+        break
+
+```
+Este algoritmo empieza con un rango de 1 a 100 y calcula el punto medio de este rango como el número a adivinar. Según la respuesta del usuario (mayor, menor, igual), el algoritmo ajusta el rango de búsqueda y calcula un nuevo punto medio para el próximo intento. Este proceso se repite hasta que el usuario indica que el número ha sido adivinado correctamente (igual), o hasta que las respuestas no permiten continuar la lógica de búsqueda binaria (por ejemplo, si el límite inferior supera al límite superior, lo que indicaría una inconsistencia en las respuestas).
+_______________________________
+## **Punto 7**
+**Instrucciones:**
+_______________________________
+## **Punto 8**
+**Instrucciones:**
+_______________________________
+**FIN DEL RETO**
