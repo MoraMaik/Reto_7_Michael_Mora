@@ -226,9 +226,47 @@ while True:
 Este algoritmo empieza con un rango de 1 a 100 y calcula el punto medio de este rango como el número a adivinar. Según la respuesta del usuario (mayor, menor, igual), el algoritmo ajusta el rango de búsqueda y calcula un nuevo punto medio para el próximo intento. Este proceso se repite hasta que el usuario indica que el número ha sido adivinado correctamente (igual), o hasta que las respuestas no permiten continuar la lógica de búsqueda binaria (por ejemplo, si el límite inferior supera al límite superior, lo que indicaría una inconsistencia en las respuestas).
 _______________________________
 ## **Punto 7**
-**Instrucciones:**
+**Instrucciones:** Implementar un programa que ingrese un número de 2 a 50 y muestre sus divisores.
+```python
+# Solicitar al usuario que ingrese un número entre 2 y 50
+numero = int(input("Ingrese un número entre 2 y 50: "))
+
+# Verificar que el número esté en el rango permitido
+if numero < 2 or numero > 50:
+    print("El número ingresado no está en el rango permitido.")
+else:
+    print(f"Divisores de {numero}:")
+    # Utilizar un ciclo for para encontrar los divisores del número
+    for divisor in range(1, numero + 1):
+        # Si el número es divisible por divisor, imprimirlo
+        if numero % divisor == 0:
+            print(divisor)
+```
+este código primero verifica si el número ingresado está dentro del rango permitido (2 a 50). Si es así, procede a iterar sobre un rango de posibles divisores (desde 1 hasta el número ingresado) y utiliza el operador módulo (`%`) para verificar si el divisor actual es un `divisor` del número ingresado (es decir, si el resto de la división es 0). Si se cumple esta condición, imprime el `divisor`.
 _______________________________
 ## **Punto 8**
-**Instrucciones:**
+**Instrucciones:** Implementar el algoritmo que muestre los números primos del 1 al 100. Nota: use funciones
+```python
+# Definir la función que verifica si un número es primo
+def es_primo(numero):
+    if numero < 2:
+        return False
+    for divisor in range(2, int(numero**0.5) + 1):
+        if numero % divisor == 0:
+            return False
+    return True
+
+# Inicializar el número de inicio
+numero = 1
+
+# Utilizar un ciclo while para iterar a través de los números del 1 al 100
+while numero <= 100:
+    if es_primo(numero):
+        print(numero)
+    numero += 1
+```
+
+La función `es_primo` recibe un número como argumento y retorna `True` si el número es primo y `False` en caso contrario. Para optimizar la función, solo se verifica la divisibilidad del número por los posibles divisores hasta la raíz cuadrada del número, ya que si un número tiene un divisor mayor que su raíz cuadrada, necesariamente tendría otro divisor menor que ella, y por lo tanto ya habría sido detectado como no primo.
+Después de definir la función, el código utiliza un bucle `for` para iterar sobre los números del 1 al 100, llamando a la función `es_primo` para cada número. Si la función retorna `True`, el número se imprime, identificándolo como un número primo.
 _______________________________
 **FIN DEL RETO**
